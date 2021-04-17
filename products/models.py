@@ -36,7 +36,14 @@ class Product(models.Model):
             resized_image = image_pillow.resize((round(new_image_width),round(new_image_height)),Image.LANCZOS)
             resized_image.save(image_path,optimize=True,quality=50)
 
+class Variation(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    stock_quantity = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return self.name
 
 
 
