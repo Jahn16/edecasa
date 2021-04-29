@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="products-catagories-area clearfix">
+    <div class="amado-pro-catagory clearfix">
+
+        <!-- Single Catagory -->
+        {% for product in products%}
+        <div class="single-products-catagory clearfix">
+            <a href="{% url 'products:detail' product.slug %}">
+                {% if product.image %}
+                <img src="media/{{ product.image }}" alt="">
+                {% else %}
+                <img src="{% static 'assets/img/product-img/suspiros_amarelo.jpg' %}" alt="">
+                {% endif %}
+                <!-- Hover Content -->
+                <div class="hover-content">
+                    <div class="line"></div>
+                    <p>Por R${{ product.base_price }}</p>
+                    <h4>{{ product.name }}</h4>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+        <!-- Product Catagories Area End -->
+{% endblock %}

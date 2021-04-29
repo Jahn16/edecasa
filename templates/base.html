@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'partials/_head.html' %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% include 'partials/search.html' %}
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+
+        {% include 'partials/mobile_nav.html' %}
+        {% include 'partials/_header.html' %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include 'partials/_section.html' %}
+    {% include 'partials/_footer.html' %}
+
+</body>
+</html>

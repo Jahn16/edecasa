@@ -19,12 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('products.urls'),name='products'),
+    #path('perfil/', include('accounts.urls'),name='profile'),
+    #path('pedido/', include('orders.urls'),name='order'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns = [
-        path('admin/', admin.site.urls),
+    urlpatterns += [
         path('__debug__/',include(debug_toolbar.urls))
     ]

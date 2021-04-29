@@ -10,11 +10,11 @@ class Order(models.Model):
     status = models.CharField(
         max_length=2,
         choices = (
-            ('C', 'Completed'),
-            ('AP','Awaiting Payment'),
-            ('AS','Awaiting Shipment'),
-            ('S','Shipped'),
-            ('CN','Cancelled')
+            ('C', 'Completo'),
+            ('AP','Aguardando Pagamento'),
+            ('P','Processando'),
+            ('E','Enviado'),
+            ('CN','Cancelado')
         )
     )
     def __str__(self):

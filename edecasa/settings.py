@@ -20,12 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = ')#wz76f4^g_7ja3ad!!a#)rhu$$o&t*=4qelx0$f)9##1zmbea'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '192.168.0.9',
+    '26.144.238.219'
+]
 
 
 # Application definition
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
 
     'products',
     'orders',
+    'accounts',
 
     'debug_toolbar',
 ]
@@ -61,7 +66,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            join(BASE_DIR,'templates')
+            join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,10 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = join(BASE_DIR,'templates/static')
 STATICFILES_DIRS = [
-    join(BASE_DIR,'templates/assets')
+    join(BASE_DIR, 'templates/static')
 ]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR,'media')
 
