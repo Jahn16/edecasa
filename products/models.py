@@ -32,13 +32,11 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
 
         def optimize_image(image):
-
             image_path = join(settings.MEDIA_ROOT, image.name)
             image_pillow = Image.open(image_path)
             image_pillow.save(image_path, optime=True, quality=85)
 
         def resize_image(image):
-
             max_image_width, max_image_height = (640, 640)
             image_path = join(settings.MEDIA_ROOT, image.name)
             image_pillow = Image.open(image_path)
@@ -47,12 +45,9 @@ class Product(models.Model):
                 resized_image = image_pillow.resize((max_image_width, max_image_height), Image.LANCZOS)
                 resized_image.save(image_path)
 
-        def generate_slug():
-            slug = slugify(self.name) + str(self.pk)
-            return slug
-
         if not self.slug:
-            self.slug = generate_slug()
+            self.slug = slugify(self.name) + str(self.pk)
+
         super().save(*args, **kwargs)
         for image in [self.image, self.second_image, self.third_image, self.fourth_image]:
             if image:
